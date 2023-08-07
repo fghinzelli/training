@@ -1,19 +1,22 @@
 1.Comments
 2.Printing
 3.Reading
-4.Variable Types
-5.Manipulating number variables
-6.Conditional Statements
-7.Comparison an Logic Operators
-8.Loops
-9.Methods
-10.String methods
-11.Data Structures
-12.Access modifiers
+4.Cocatenation
+5.Variable Types
+6.Manipulating number variables
+7.Conditional Statements
+8.Comparison an Logic Operators
+9.Loops
+10.Methods
+11.String methods
 13.Objects
-14.Inheritance
-15.Polymorphism
-16.Connection to database
-17.Receiving HTTP request
-18.Return JSON response
-19.Tests
+14.Access modifiers
+15.Data Structures
+16.Inheritance
+17.Polymorphism
+18.Connection to database
+19.Receiving HTTP request
+20.Return JSON response
+21.Tests
+
+

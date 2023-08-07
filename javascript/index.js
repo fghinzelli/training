@@ -1,4 +1,0 @@
-// Inline comments
-/*
-  Block comments
-*/
