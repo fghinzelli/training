@@ -9,3 +9,4 @@ console.log("Hello!");
 // Read value
 let inputName = prompt("What's your name?");
 console.log("Hello ", inputName);
+
