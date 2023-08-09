@@ -1,21 +1,11 @@
-import java.util.HashMap;
+import java.util.*;
 
 public class Exercise2 {
   public static boolean isAnagram(String test, String original) {  
-    return createArray(original.toUpperCase()).equals(createArray(test.toUpperCase()));
-  }
-
-  public static HashMap<Character, Integer> createArray(String text) {
-    HashMap<Character, Integer> lista = new HashMap<Character, Integer>();
-    for (int i=0; i<text.length(); i++) {
-      char letter = text.charAt(i);
-      if (!lista.containsKey(letter)) {
-        lista.put(letter, 1);
-      } else {
-        lista.put(letter, lista.get(letter) + 1);
-      }
-    }
-    return lista;
+    final char[] a = test.toLowerCase().toCharArray(), b = original.toLowerCase().toCharArray();
+    Arrays.sort(a);
+    Arrays.sort(b);
+    return Arrays.equals(a, b);
   }
 
   public static void main(String[] args) {
