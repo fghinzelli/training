@@ -1,12 +1,8 @@
 def solution(number):
   total = 0
   for i in range(0, number):
-    aux = 0
-    if i % 3 == 0:
-      aux = i
-    if aux == 0 and i % 5 == 0:
-      aux = i
-    total += aux
+    if i % 3 == 0 or i % 5 == 0:
+      total += i
   return total
 
 def testSolution():
