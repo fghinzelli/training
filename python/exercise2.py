@@ -1,11 +1,7 @@
 def solution(test, original):
-    arrTest = list(test.upper())
-    arrOriginal = list(original.upper())
-    arrTest.sort()
-    arrOriginal.sort()
-    return (len(test) == len(original)) and (arrTest == arrOriginal)
+    return sorted(test.lower()) == sorted(original.lower())
 
 def testSolution():
-    print(solution("Buckethead", "DeathCubeA"))
+    print(solution("Buckethead", "DeathCubeK"))
 
 testSolution()
