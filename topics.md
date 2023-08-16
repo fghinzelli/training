@@ -1,9 +1,9 @@
 1. Comments
-2. Printing
-3. Reading
-4. Cocatenation
-5. Variable Types
-6. Manipulating number variables
+2. Printing 
+3. Reading 
+4. Cocatenation 
+5. Variable Types 
+6. Manipulating number variables 
 7. Conditional Statements
 8. Comparison an Logic Operators
 9. Loops
