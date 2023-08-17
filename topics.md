@@ -2,10 +2,10 @@
 2. Printing 
 3. Reading 
 4. Cocatenation 
-5. Variable Types 
-6. Manipulating number variables 
-7. Conditional Statements
-8. Comparison an Logic Operators
+5. Variables and Data Types 
+6. Cast data types
+7. Operators
+8. Conditional Statements
 9. Loops
 10. Methods
 11. String methods
