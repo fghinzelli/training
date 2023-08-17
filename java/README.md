@@ -25,13 +25,7 @@ class Reader {
   }
 }
 ```
-
-### 4. Cocatenation ###
-```java
-System.out.println("Text" + myVar);
-```
-
-### 5. Variables and Data Types ###
+### 4. Variables and Data Types ###
 ```java
   // Primitive
   byte myByte = 100;
@@ -48,7 +42,7 @@ System.out.println("Text" + myVar);
   Byte, Short, Integer, Long, Float, Double, Boolean, Character
 ```
 
-### 6. Cast data types ### 
+### 5. Cast data types ### 
 ```java
   // Automatic 
   // byte -> short -> char -> int -> long -> float -> double
@@ -59,13 +53,15 @@ System.out.println("Text" + myVar);
   long myLong = myLong;
   int myInt = (int) myLong;
 ```
-### 7. Operators ###
+### 6. Operators ###
 ```java
   /* Arithmetic */
   +  // Addition
   -  // Subtraction
   *  // Multiplication
   /  // Division
+  Math.pow(n, e) // Power
+  Math.sqrt(n) // Power
   %  // Modulo
   ++ // Increment
   -- // Decrement
@@ -79,10 +75,26 @@ System.out.println("Text" + myVar);
   !  // NOT
 ```
 
-### 8. Conditional Statements ###
-### 9. Loops ###
-### 10. Methods ###
-### 11. String methods ###
+### 7. Conditional Statements ###
+### 8. Loops ###
+### 9. Methods ###
+### 10. String methods ###
+```java
+  String txt = "Sample text";
+  // UPPERCASE
+  txt.toUpperCase(); 
+  // lowercase
+  txt.toLowerCase(); 
+  // Find index of string
+  txt.indexOf("text") // Outputs 7
+
+
+```
+### 11. Cocatenation ###
+```java
+  System.out.println("Text" + myVar);
+```
+
 ### 13. Objects ###
 ### 14. Access modifiers ###
 ### 15. Data Structures ###
@@ -93,5 +105,9 @@ System.out.println("Text" + myVar);
 ### 20. Return JSON response ###
 ### 21. Tests ###
 ### 22. Date format (convertion methods) ###
+
+```java
+
+```
 
 
