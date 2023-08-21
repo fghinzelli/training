@@ -26,6 +26,7 @@ class Reader {
 }
 ```
 ### 4. Variables and Data Types ###
+Variables are **statically** typed
 ```java
   // Primitive
   byte myByte = 100;
@@ -40,6 +41,14 @@ class Reader {
   String txt = "Text";
   // Wrapper Classes
   Byte, Short, Integer, Long, Float, Double, Boolean, Character
+
+  // Verify type of variable
+  String myVar = "Text";
+  if (myVar instanceof String) {
+    System.out.println("I am a String");
+  }
+  int myNumber = 10;
+  System.out.println("My type is" + (Object) myNumber).getClass().getName())
 ```
 
 ### 5. Cast data types ### 
