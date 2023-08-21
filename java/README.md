@@ -70,7 +70,7 @@ Variables are **statically** typed
   *  // Multiplication
   /  // Division
   Math.pow(n, e) // Power
-  Math.sqrt(n) // Power
+  Math.sqrt(n) // Raiz quadrada
   %  // Modulo
   ++ // Increment
   -- // Decrement

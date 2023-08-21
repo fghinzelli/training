@@ -20,15 +20,28 @@ my_age = input("What's your age?")
 ### 4. Variables and Data Types ###
 Variables are **dynamically** typed. Is not necessary define the type on creation
 ```python
+  # Text
+  var_string = "Text" # string
+  var_string2 = 'Text' # string
+  # Numeric
   var_int = 100; # int
   var_float = 2.3 # float
   var_complex = 3+2j # complex
-  var_string = "Text" # string
-  var_string2 = 'Text' # string
+  # Boolean 
   var_boolean = True # boolean (True/False)
+
+  # Sequence
   var_list = [1, 3, 4] # list (mutable)
-  var_tuple = (1, 3, 4) # tupple (immutable)
+  var_tuple = (1, 3, 4) # tupple (List is immutable)
+  var_range = range(0, 5) # range
   var_dict = {"a": 1, "b": 2, "c": 3} # dict
+  var_set = {"a", "b", "c"} # set (Items are immutable, the list not)
+
+  # Binary
+  # bytes, bytearray, memoryview
+
+  # None
+  var_none = None
 
   # Get type of variable
   type(my_var)
@@ -46,11 +59,26 @@ Variables are **dynamically** typed. Is not necessary define the type on creatio
 
 ### 5. Cast data types ### 
 ```python
-
+  
 ```
 ### 6. Operators ###
 ```python
+  # Arithmetic
+  +  # Addition
+  -  # Subtraction
+  *  # Multiplication
+  /  # Division
+  ** # Power
+  math.sqrt   # Raiz quadrada
+  %  # Modulo
 
+  # Assignment
+  +=, -=, *=, /=
+
+  # Logical
+  and // AND
+  or // OR
+  not  // NOT
 ```
 
 ### 7. Conditional Statements ###
