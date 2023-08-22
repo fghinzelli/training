@@ -82,6 +82,15 @@ Variables are **dynamically** typed. Is not necessary define the type on creatio
 ```
 
 ### 7. Conditional Statements ###
+```python
+  my_var = 10
+  if my_var < 10:
+    print('minor')
+  elif my_var == 10:
+    print('equal')
+  else:
+    print('major')
+```
 ### 8. Loops ###
 ### 9. Methods ###
 ### 10. String methods ###
@@ -99,14 +108,83 @@ Variables are **dynamically** typed. Is not necessary define the type on creatio
 ### 16. Inheritance ###
 ### 17. Polymorphism ###
 ### 18. Connection to database ###
-### 19. Receiving HTTP request ###
-### 20. Return JSON response ###
+### 19. HTTP Server (API)
+```python
+  from http.server import BaseHTTPRequestHandler, HTTPServer
+  import json
+
+  class MyServer(BaseHTTPRequestHandler):
+    def _set_response(self, status_code=200, content_type='application/json'):
+      self.send_response(status_code)
+      self.send_header('Content-type', content_type)
+      self.end_headers()
+
+    def do_GET(self):
+      if self.path == '/users':
+        self._set_response()
+        data = {'username': 'user', 'age': '52'}
+        self.wfile.write(json.dumps(data).encode('utf-8'))
+      else:
+        self.send_response(404)
+        self.end_headers()
+        self.wfile.write('Not found'.encode('utf-8'))
+
+    def do_POST(self):
+      if self.path == '/users':
+        content_length = int(self.headers['Content-Length'])
+        post_data = self.rfile.read(content_length).decode('utf-8')
+        data = json.loads(post_data)
+        response_data = {'message': 'Received POST data', 'data': data}
+        self._set_response(201)
+        self.wfile.write(json.dumps(response_data).encode('utf-8'))
+      else:
+        self.send_response(404)
+        self.end_headers()
+        self.wfile.write('Not Found'.encode('utf-8'))   
+
+  host = '127.0.0.1'
+  port = 8091
+
+  server = HTTPServer((host, port), MyServer)
+
+  print(f'Servidor rodando em http://{host}:{port}')
+
+  server.serve_forever()
+```
+### 20. HTTP Client
+```python
+  import requests
+  import json
+
+  url = 'https://www.cebraspe.org.br/concursos/serpro_23'
+
+  # GET
+  response = requests.get(url)
+  if response.status_code == 200:
+    print(response.content)
+  else:
+    print('Erro', response.status_code)
+
+  # POST
+  data = {'title': 'foo', 'body': 'bar', 'userId': 1}
+  response = requests.post(url, json=json.loads(data))
+
+  if response.status_code == 201:
+    created_data = response.json()
+    print('Novo objeto criado', created_data)
+  else:
+    print('Erro: ', response.status_code)
+```
 ### 21. Tests ###
+```python
+  assert sum([1, 4, 1]) == 6, "Should be 6"
+```
 ### 22. Date format (convertion methods) ###
 
 ```python
 
 ```
 ### 23. Files (read and write) ###
+### 24. Exceptions ###
 
 
