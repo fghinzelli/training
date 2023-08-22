@@ -178,6 +178,18 @@ Variables are **dynamically** typed. Is not necessary define the type on creatio
 ### 21. Tests ###
 ```python
   assert sum([1, 4, 1]) == 6, "Should be 6"
+
+  ###
+  import unittest
+
+
+class TestSum(unittest.TestCase):
+
+    def test_sum(self):
+        self.assertEqual(sum([1, 2, 3]), 6, "Should be 6")
+
+    def test_sum_tuple(self):
+        self.assertEqual(sum((1, 2, 2)), 6, "Should be 6")
 ```
 ### 22. Date format (convertion methods) ###
 
