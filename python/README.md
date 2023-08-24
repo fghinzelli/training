@@ -277,8 +277,21 @@ Variables are **dynamically** typed. Is not necessary define the type on creatio
   thisset.update(otherset) 
 
   ### DICTIONARY ###
+  # Ordered, Changeale, does not allow duplicates.
+  this_dict == dict(name = "John", age = 30)
+  other_dict = {
+    "name": "John",
+    "age": 36
+  }
 
-
+  print(this_dict['name'])
+  print(this_dict.get('name'))
+  # List of keys
+  this_dict.keys()
+  # List all values
+  this_dict.values()
+  # List of tuples with each item
+  this_dict.items()
 
 
 ```
