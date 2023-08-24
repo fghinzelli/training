@@ -59,7 +59,10 @@ Variables are **dynamically** typed. Is not necessary define the type on creatio
 
 ### 5. Cast data types ### 
 ```python
-  
+  int()
+  float()
+  str()
+  bool()
 ```
 ### 6. Operators ###
 ```python
@@ -76,9 +79,17 @@ Variables are **dynamically** typed. Is not necessary define the type on creatio
   +=, -=, *=, /=
 
   # Logical
-  and // AND
-  or // OR
-  not  // NOT
+  and # AND
+  or # OR
+  not  # NOT
+
+  # Identity
+  is 
+  is not
+
+  # Membership
+  in
+  not in 
 ```
 
 ### 7. Conditional Statements ###
@@ -95,16 +106,185 @@ Variables are **dynamically** typed. Is not necessary define the type on creatio
 ### 9. Methods ###
 ### 10. String methods ###
 ```python
+  # Multiline strings
+  x = """
+  asdfasdfasd
+  asdfasdfasd
+  """
+  x = "The best things in life are free!"
+
+  # String size
+  len(x)
+
+  # Contains
+  if "best" in x:
+    print("yes")
+
+  # Slicing (By position)
+  print(x[2:5]) # Position 2 to 5
+  print(x[:5]) # Print from the start to position 5
+  print(x[2:]) # Print from position 2 to the end
+  print(x[-5:-2]) # Print by the end
+  print(x[:]) # Print all array
+
+  # Uppercase
+  x.upper()
+
+  # Lowercase
+  x.lowercase()
+
+  # Trim
+  x.strip()
+
+  # Replace
+  x.replace("t", "x")
+
+  # Split
+  x.split(" ")
+
+  # Concatenation
+  print("Text" + myVar)
+
+  # Index
+  x.index("life")
+
+
+  # Format
+  name = "John Snow"
+  age = 25
+  print("Name: {}, age: {}".format(name, age))
+  print("Age: {1}, name: {0}".format(name, age))
 
 ```
-### 11. Cocatenation ###
+### 11. Arrays ###
 ```python
-  print("Text" + myVar)
+  ### LISTS ###
+  # Changeble, Ordered, Allow duplicates. Can contain different data types
+  my_list = ["apple", "banana", "orange"]
+
+  # Get size
+  print(len(my_list))
+
+  # Get index item
+  print(my_list[0])
+  # Range of indexes
+  print(my_list[2:5])
+  print(my_list[:4])
+  print(my_list[2:])
+  print(my_list[-5:-2])
+
+  # Check if one item exists
+  if ("apple" in my_list):
+    print("ok")
+
+  # Change one value
+  my_list[1] = "Grape"
+
+  # Change a range of value
+  my_list[2:3] = ["Fruit1", "Fruit2"]
+
+  # Insert values on specified index
+  my_list.insert(2, "watermelon")
+
+  # Insert data from another array
+  my_list.extend(["new1", "new2"])
+
+  # Append
+  my_list.append("cherry")
+
+  # Remove
+  my_list.remove("apple")
+
+  # Remove specified index
+  my_list.pop(1)
+  # If not specify the index, the last item will be removed
+  my_list.pop()
+
+  # Remove one item
+  del my_list[2]
+  # Remove all array
+  del my_list
+
+  # Remove all itens
+  my_list.clear() 
+
+  # Convert to one list
+  my_list = list(("apple", "banana", "orange"))
+
+  # Iterate
+  for x in my_list:
+    print(x)
+
+  # Iterate with the index numbers
+  for i in range(len(my_list)):
+    print(my_list[i])
+
+  # Using list compreehensoin
+  [print(x) for x in my_list]
+
+  # Sorting
+  my_list.sort()
+  my_list.sort(reverse=True)
+
+  # Copy
+  new = my_list.copy()
+  new2 = list(my_list)
+
+  # Reverse
+  my_list.reverse()
+
+  # Join
+  my_list + new
+  my_list.extend(new)
+
+  # Umpacking
+  (red, yellow, orange) = x
+  # Upacking "other" into a varible
+  x = ("one", "two", "three", "four", "five")
+  (one, two, *other)
+
+  # Multiply values
+  new_list = my_list * 2
+
+  # Count the number of occurences of one item
+  new_list.count("apple")
+
+  # Return the index of a value
+  my_list.index("apple")
+
+  ### TUPLE ###
+  # IMUTABLE, Ordered, Allow duplicate values
+  my_tuple = ("apple", "banana", "orange")
+  # To create a tuple with one unique item, inclue a comma on the end
+  only_one = ("apple",)
+
+  # To change values of a tuple
+  x = ("apple", "banana", "orange")
+  y = list(x)
+  y[1] = "kiwi"s
+  x = tuple(y)
+
+  ### SET ###
+  # Unorderd, unchangeable and unindexed (Items are immutable, but the list not!). Without duplicate values.
+  my_set = {"apple", "banana", "orange"}
+
+  # To add a new item
+  my_set.add("lemon")
+
+  # To add sets
+  thisset = {"one", "two", "three"}
+  otherset = {"four", "five", "six"}
+  thisset.update(otherset) 
+
+  ### DICTIONARY ###
+
+
+
+
 ```
 
 ### 13. Objects ###
 ### 14. Access modifiers ###
-### 15. Data Structures ###
 ### 16. Inheritance ###
 ### 17. Polymorphism ###
 ### 18. Connection to database ###
@@ -198,5 +378,12 @@ class TestSum(unittest.TestCase):
 ```
 ### 23. Files (read and write) ###
 ### 24. Exceptions ###
-
+```python
+  try:
+    f = open("file.txt")
+  except:
+    print("Lorum ipsum")
+  finally:
+    f.close()
+```
 
