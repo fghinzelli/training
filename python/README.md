@@ -103,7 +103,33 @@ Variables are **dynamically** typed. Is not necessary define the type on creatio
     print('major')
 ```
 ### 8. Loops ###
-### 9. Methods ###
+```python
+# for
+for i in range(0, 10):
+  print(i)
+
+[print(i) for i in range(0, 10)]
+
+# while
+while i in range(0, 10):
+  print(i)
+```
+
+### 9. Functions ###
+```python
+  def my_function(*parameters):
+    print(parameters[2])
+
+  my_function("a", "b", "c")
+
+  # kwargs
+  def my_other_function(**kwargs):
+    print(kwargs['name'])
+
+  my_other_function({'name': 'Fernando'})
+
+  # Default parameters
+```
 ### 10. String methods ###
 ```python
   # Multiline strings
