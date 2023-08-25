@@ -117,13 +117,23 @@ Variables are **statically** typed
       System.out.println(i);
   }
 
-  i = 0
+  i = 0;
   while (i < 10) {
-    // Go 
-    continue
+    // Go to next
+    i++;
+    continue;
+  }
+
+  // TODO
+
+```
+### 9. Functions ###
+```java
+  static void myFunction(String... parameters) {
+      System.out.println(parameters[2]);
   }
 ```
-### 9. Methods ###
+
 ### 10. String methods ###
 ```java
   String txt = "Sample text";
