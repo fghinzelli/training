@@ -90,6 +90,12 @@ Variables are **dynamically** typed. Is not necessary define the type on creatio
   # Membership
   in
   not in 
+
+  ## Math functions
+  max
+  min
+  sum 
+  pow # power
 ```
 
 ### 7. Conditional Statements ###
@@ -182,7 +188,30 @@ while i in range(0, 10):
   print("Age: {1}, name: {0}".format(name, age))
 
 ```
-### 11. Arrays ###
+### 11. Date format (convertion methods) ###
+
+```python
+  import datetime
+
+  # Current date
+  datetime.datetime.today()
+
+  # Current time
+  datetime.datetime.now()
+
+  # Print formatted date
+  x = datetime.datetime.now()
+  print(x.strftime(%A))
+  # %d = day of month (1 - 31)
+  # %m = month of year (1 - 12)
+  # %Y = Full year 
+  # %H = hour 24h format (0 - 23)
+  # %M = minute (0 - 59)
+  # %S = seconds (0 - 59)
+  # %w = weekday (0 - 6)
+```
+
+### 12. Arrays ###
 ```python
   ### LISTS ###
   # Changeble, Ordered, Allow duplicates. Can contain different data types
@@ -322,12 +351,125 @@ while i in range(0, 10):
 
 ```
 
-### 13. Objects ###
-### 14. Access modifiers ###
-### 16. Inheritance ###
-### 17. Polymorphism ###
-### 18. Connection to database ###
-### 19. HTTP Server (API)
+### 13. Files (read and write) ###
+```python
+  import os
+
+  try:
+    f = open('file.txt', 'r')
+    print(f.read())
+    f.close()
+  except:
+
+  # Read file
+  # Mode: r - readonly; 
+  with open('file.txt', 'r') as my_file:
+    # Read all the file
+    print(my_file.read())
+
+    # Read first line
+    print(my_file.readline())
+
+  # Write file
+  # Modes: a: append to the end; w: override any content
+  with open('file.txt', 'a') as my_file:
+    my_file.write('New line');
+
+```
+### 14. Exceptions ###
+```python
+  try:
+    # throew a new exception
+    raise Exception("Error on try")
+  except Exeption as e:
+    print(e)
+  else:
+    print("No errors!")
+  finally:
+    pass
+```
+
+### 15. Classes/Objects ###
+```python
+  class Person():
+    __init__(self, firstname, lastname):
+      self.firstname = ""
+      self.lastname = ""
+
+    __str__(self):
+      return f"{self.firstname} {self.lastname}"
+
+    def myFunction(self):
+      print(f"Hello {self.name} {self.lastname}!")
+
+```
+### 16. Inheritance, Encapsulation and Polymorphism ###
+```python
+  class Person:
+    def __init__(self, firstname, lastname):
+      self.firstname = firstname
+      self.lastname = lastname
+
+    def __str__(self):
+      return f"{self.firstname} {self.lastname}"
+
+  class Student(Person): # Inheritance
+    def __init__(self, firstname, lastname, age):
+      super().__init__(firstname, lastname)
+      self.__age = age
+
+    # Emcapsulation
+    @property
+    def age
+      return self.__age
+
+    # Polymorphism
+    def __str__(self):
+      return "f{self.firstname} {self.lastname} ({self.age})"
+```
+
+### 17. Connection to database ###
+```python
+
+  # Using Mysql
+  import mysql.connector
+
+  # Create a new connection
+  myConnection = mysql.connector.connect(
+    host="localhost"
+    user="username"
+    password="password"
+    database="database"
+  )
+
+  cursor = myConnection.cursor()
+  # Insert 
+  sql = "INSERT INTO USERS (firstname, lastname) VALUES (%s, %s)"
+  # one value
+  val = ("John", "Snow")
+  # multiple values
+  val = [
+    ("Maria", "Silva"),
+    ("Jose", "Loureiro"),
+    ("Alfredo", "Chaves")
+  ]
+  cursor.execute(sql, val)
+  myConnection.commit()
+  print(cursor.rowcount, "Record inserted")
+
+  # Select 
+  cursor.execute("SELECT firstname, lastname FROM USERS")
+  # return all lines
+  result_set = cursor.fetchall()
+  # return only one value
+  result_unique = cursor.fetchone()
+
+  for i in result_set:
+    print(i)
+
+```
+
+### 18. HTTP Server (API)
 ```python
   from http.server import BaseHTTPRequestHandler, HTTPServer
   import json
@@ -370,7 +512,7 @@ while i in range(0, 10):
 
   server.serve_forever()
 ```
-### 20. HTTP Client
+### 19. HTTP Client
 ```python
   import requests
   import json
@@ -386,7 +528,7 @@ while i in range(0, 10):
 
   # POST
   data = {'title': 'foo', 'body': 'bar', 'userId': 1}
-  response = requests.post(url, json=json.loads(data))
+  response = requests.post(url, json=json.dumps(data))
 
   if response.status_code == 201:
     created_data = response.json()
@@ -394,35 +536,25 @@ while i in range(0, 10):
   else:
     print('Erro: ', response.status_code)
 ```
-### 21. Tests ###
+### 20. Tests ###
 ```python
   assert sum([1, 4, 1]) == 6, "Should be 6"
 
-  ###
-  import unittest
+### Builtin class unittest
 
+import unittest
+
+def sumOfNumbers(number1, number2):
+  return number1 + number2
 
 class TestSum(unittest.TestCase):
 
-    def test_sum(self):
-        self.assertEqual(sum([1, 2, 3]), 6, "Should be 6")
+  def test_sum_ok():
+    self.assertEqual(sumOfNumbers(2, 3), 5, "Should be 5")
 
-    def test_sum_tuple(self):
-        self.assertEqual(sum((1, 2, 2)), 6, "Should be 6")
+  def test_sum_nok(self):
+    self.assertNotEqual(sumOfNumbers(2, 3), 2, "Is incorect")
+
+# To execute all the test cases:
+python -m unittest discover -s .
 ```
-### 22. Date format (convertion methods) ###
-
-```python
-
-```
-### 23. Files (read and write) ###
-### 24. Exceptions ###
-```python
-  try:
-    f = open("file.txt")
-  except:
-    print("Lorum ipsum")
-  finally:
-    f.close()
-```
-
