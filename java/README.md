@@ -9,6 +9,7 @@
 ### 2. Printing ###
 ```java
 System.out.println("Output text");
+System.out.print("Output text without ln");
 ```
 
 ### 3. Reading ###
@@ -18,8 +19,7 @@ import java.util.Scanner;
 class Reader {
   public static void main (String[] args) {
     Scanner myScan = new Scanner(System.in);
-
-    System.out.println("Who are you?");
+    System.out.println("What's your age?");
     String name = myScan.nextLine();
     System.out.println("Hi " + name);
   }
@@ -37,10 +37,22 @@ Variables are **statically** typed
   double myDouble = 234234d;
   char myChar = 'B'; 
   boolean isTrue = true;
-  // Non primitive
+  // No primitive
   String txt = "Text";
   // Wrapper Classes
   Byte, Short, Integer, Long, Float, Double, Boolean, Character
+
+  // Lists
+  List<Integer> varList = Arrays.asList(1, 3, 4); // list (mutable)
+  List<Integer> varArrayList = new ArrayList<>(Arrays.asList(1, 3, 4)); // arraylist (mutable)
+  Tuple<Integer, Integer, Integer> varTuple = new Tuple<>(1, 3, 4); // tuple (immutable)
+  int[] varArray = new int[]{1, 3, 4}; // array (mutable)
+  Set<String> varSet = new HashSet<>(Arrays.asList("a", "b", "c")); // set (items are immutable)
+  Map<String, Integer> varMap = new HashMap<>(); // map
+  varMap.put("a", 1);
+  varMap.put("b", 2);
+  varMap.put("c", 3);
+  Integer myVar = null; 
 
   // Verify type of variable
   String myVar = "Text";
@@ -61,6 +73,10 @@ Variables are **statically** typed
   // double -> float -> long -> int -> char -> short -> byte
   long myLong = myLong;
   int myInt = (int) myLong;
+  int intValue = Integer.parseInt("123");
+  double doubleValue = Double.parseDouble("3.14");
+  String strValue = String.valueOf(42);
+  boolean boolValue = Boolean.parseBoolean("true");
 ```
 ### 6. Operators ###
 ```java
@@ -85,7 +101,28 @@ Variables are **statically** typed
 ```
 
 ### 7. Conditional Statements ###
+```java
+  int myVar = 10;
+  if (myVar < 10) {
+      System.out.println("minor");
+  } else if (myVar == 10) {
+      System.out.println("equal");
+  } else {
+      System.out.println("major");
+  }
+```
 ### 8. Loops ###
+```java
+  for (int i = 0; i < 10; i++) {
+      System.out.println(i);
+  }
+
+  i = 0
+  while (i < 10) {
+    // Go 
+    continue
+  }
+```
 ### 9. Methods ###
 ### 10. String methods ###
 ```java
