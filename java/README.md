@@ -117,12 +117,18 @@ Variables are **statically** typed
       System.out.println(i);
   }
 
-  i = 0;
+  int i = 0;
   while (i < 10) {
     // Go to next
     i++;
     continue;
   }
+
+  int numero = 1;
+  do {
+      System.out.println("Número: " + numero);
+      numero++;
+  } while (numero <= 5);
 
   // TODO
 
@@ -136,33 +142,199 @@ Variables are **statically** typed
 
 ### 10. String methods ###
 ```java
-  String txt = "Sample text";
-  // UPPERCASE
-  txt.toUpperCase(); 
-  // lowercase
-  txt.toLowerCase(); 
-  // Find index of string
-  txt.indexOf("text") // Outputs 7
+  String x = "The best things in life are free!";
+  System.out.println("String size: " + x.length());
+  System.out.println("Contains 'best': " + x.contains("best"));
+  System.out.println("Substring: " + x.substring(2, 5));
+  System.out.println("Uppercase: " + x.toUpperCase());
+  System.out.println("Lowercase: " + x.toLowerCase());
+  System.out.println("Trim: " + x.trim());
+  System.out.println("Replace: " + x.replace("best", "amazing"));
+  System.out.println("Split: " + Arrays.toString(x.split(" ")));
+  String concat = "Text" + myVar;
+  int index = x.indexOf("life");
+  String formatted = String.format("Name: %s, Age: %d", "John Snow", 25);
 
 
 ```
-### 11. Cocatenation ###
+### 11. Date format (convertion methods) ###
 ```java
-  System.out.println("Text" + myVar);
+Date currentDate = new Date();
+SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+String formattedDate = dateFormat.format(currentDate);
 ```
 
-### 13. Objects ###
-### 14. Access modifiers ###
-### 15. Data Structures ###
-### 16. Inheritance ###
-### 17. Polymorphism ###
-### 18. Connection to database ###
-### 19. Receiving HTTP request ###
-### 20. Return JSON response ###
-### 21. Tests ###
-### 22. Date format (convertion methods) ###
+### 12. Arrays ###
+```java
+  List<String> myArrayList = new ArrayList<>(Arrays.asList("apple", "banana", "orange"));
+  System.out.println("Size: " + myArrayList.size());
+  System.out.println("Index: " + myArrayList.get(0));
+  System.out.println("Contains 'apple': " + myArrayList.contains("apple"));
+  myArrayList.set(1, "Grape");
+  myArrayList.remove("apple");
+  myArrayList.remove(1);
+  myArrayList.clear();
+``` 
+
+### 13. Files (read and write) ###
 
 ```java
+  // Reading
+  try {
+    Scanner scanner = new Scanner(new File("file.txt"));
+    while (scanner.hasNextLine()) {
+        String line = scanner.nextLine();
+        System.out.println(line);
+    }
+    scanner.close();
+  } catch (FileNotFoundException e) {
+    e.printStackTrace();
+  }
+  // Writing
+  try {
+      FileWriter writer = new FileWriter("file.txt");
+      writer.write("New line");
+      writer.close();
+  } catch (IOException e) {
+      e.printStackTrace();
+  }
+``` 
+### 14. Exceptions ###
+```java
+  try {
+    throw new Exception("Error on try");
+  } catch (Exception e) {
+      System.out.println(e.getMessage());
+  } finally {
+      // Do something
+  }
+``` 
+### 15. Classes/Objects ###
+```java
+class Person {
+  private String firstName;
+  private String lastName;
+
+  public Person(String firstName, String lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+  }
+
+  @Override
+  public String toString() {
+      return firstName + " " + lastName;
+  }
+
+  public void myFunction() {
+      System.out.println("Hello " + firstName + " " + lastName + "!");
+  }
+}
+``` 
+### 16. Inheritance, Encapsulation and Polymorphism ###
+```java
+class Student extends Person {
+  private int age;
+
+  public Student(String firstName, String lastName, int age) {
+      super(firstName, lastName);
+      this.age = age;
+  }
+
+  @Override
+  public String toString() {
+      return super.toString() + " (" + age + ")";
+  }
+}
+
+public static void main(String[] args) {
+  Main main = new Main();
+  Person person = main.new Person("John", "Doe");
+  System.out.println(person);
+  Student student = main.new Student("Alice", "Smith", 20);
+  System.out.println(student);
+}
+``` 
+### 17. Connection to database ###
+```java
+  import java.sql.*;
+
+  public class Main {
+    String url = "jdbc:mysql://localhost/database";
+    String user = "user";
+    String password = "password";
+
+    Connection connection = null;
+    PreparedStatement preparedStatement = null
+
+    try {
+      connection = DriverManager.getConnection(url, user, password);
+      // Insert
+      String insertSql = "INSERT INTO users (username, age) VALUES ('John', 25)";
+      preparedStatement = connection.prepareStatement(insertSql);
+      preparedStatement.setString(1, "John");
+      preparedStatement.setString(2, "Snow");
+      int rowInserted = preparedStatement.executeUpdate();
+      System.out.println(rowsInserted + " Record inserted");
+      // Select
+      String selectSql = "SELECT firstname, lastname FROM USERS";
+      preparedStatement = connection.prepareStatement(selectSql);
+      ResultSet resultSet = preparedStatement.executeQuery();
+      while (resultSet.next()) {
+        String firstName = resultSet.getString("firstname");
+        String lastname = resultSet.getString("lastname");
+        System.out.println("First name: " + firstname + ", Last name: " + lastname);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      preparedStatement.close();
+      connection.close();
+    }
+  }
+``` 
+### 18. HTTP Server (API)
+```java
+  import com.sun.net.httpserver.*;
+  import java.io.*;
+  import java.net.InetSocketAddress;
+
+  public class Main {
+    public static void main(String[] args)  throws Exception {
+      HttpServer server = HttpServer.create(new InetSocketAddress(8989), 0);
+      server.createContext("/users", new MyHandler());
+      server.setExecutor(null);
+      server.start();
+    }
+
+    static class MyHandler implements HttpHandler {
+      @Override
+      public void handle(HttpExchange t) throws IOException {
+        String response = "{\"username\": \"user\", \"age\": 25}";;
+        t.sendResponseHeaders(200, response.length());
+        OutputStream os = t.getResponseBody()
+        os.write(response.getBytes());
+        os.close();
+      }
+    }
+  }
+
+```
+### 19. HTTP Client
+```java
+
+```
+### 20. Tests ###
+```java
+import org.junit.*;
+
+public class JUnitProgram {
+  @Test
+  public void test_JUnit {
+    System.out.println("This is the test case in this class");
+    String str1 = "Result to test";
+    assertEquals("Result to test", str1);
+  }
+}
 
 ```
 
